@@ -1,6 +1,65 @@
+<STYLE>
+  heading {
+  font-size: 25px;
+  text-align: center;
+  color: #FFF5EE;
+  font: arial;
+}
+
+p {
+  font-size: 18px;
+  text-align: center;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+  
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #2F4F4F;
+}
+
+form {
+  display: block;
+}
+
+input {
+  font-size: 26px;
+  letter-spacing:0.02em;
+  padding: 0.8em;
+   font: arial;
+border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+</STYLE>
+
+
 <heading> The Palindrome Checker<heading>
   <p> With this little fun app you can check is a word is a palidrome or not. Give it a go!</p>
   <br>
 <form>
   <input placeholder="Enter a palindrome…"/>
 </form>
+  
+<style>
+  const form = document.querySelector('form');
+const input = document.querySelector('input');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  alert(isPalendrome(input.value));
+});
+
+function isPalendrome(string) {
+  if (!string) return false;
+  string = string.toLowerCase();
+  const start = string.slice(0, string.length / 2);
+  const end = Array.from(start).reverse().join('');
+  return string.slice(-end.length) === end;
+}
+</style>
